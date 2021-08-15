@@ -13,24 +13,32 @@ const randomIntegerFromInterval = (min, max) => {
 
 const refBtnStart = document.querySelector('[data-action="start"]');
 const refBtnStop = document.querySelector('[data-action="stop"]');
-const refBody = document.querySelector('body');
+const refBody = document.querySelector("body");
 
-refBtnStart.addEventListener('click', startChangeColor);
-refBtnStop.addEventListener('click', stopChangeColor);
+refBtnStart.addEventListener("click", startChangeColor);
+refBtnStop.addEventListener("click", stopChangeColor);
 
-idInterval = null;
+let idInterval = null;
 
 function startChangeColor() {
   idInterval = setInterval(() => {
+    refBody.style.backgroundColor = randomColor();
+    // refBody.style.backgroundColor = `${
+    //   colors[randomIntegerFromInterval(0, colors.length - 1)]
     refBody.style.backgroundColor = `${
-      colors[randomIntegerFromInterval(0, 6)]
-      }`;
+      colors[randomIntegerFromInterval(0, colors.length - 1)]
+    }`;
     refBtnStart.disabled = true;
-  }, 1000)
-};
+  }, 1000);
+}
 
 function stopChangeColor() {
   clearInterval(idInterval);
   refBtnStart.disabled = false;
-};
+}
 
+function randomColor() {
+  return `rgb(${randomIntegerFromInterval(0, 255)}, 
+              ${randomIntegerFromInterval(0, 255)},
+              ${randomIntegerFromInterval(0, 255)})`;
+}
