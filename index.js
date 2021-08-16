@@ -28,8 +28,8 @@ function startChangeColor() {
     refBody.style.backgroundColor = `${
       colors[randomIntegerFromInterval(0, colors.length - 1)]
     }`;
-    refBtnStart.disabled = true;
   }, 1000);
+  refBtnStart.disabled = true;
 }
 
 function stopChangeColor() {
